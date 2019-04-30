@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+<!--//
+C - 객체를 생성 -> 객체 필요 X
+R - 단일 object
+U - 단일 object
+D - 단일 object
+L - 복수 객체 object_list
+
+CSS Framework
+1. Bootstrap
+2. Falt UI
+3. Material Design Lite : Google - Android랑 디자인이 비슷하다
+//-->
+
+{% block title %}
+Block List
+{% endblock %}
+
+
+{% block content %}
+{# bookmark 목록 출력하기 #}
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-xl-8 col-md-4">
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">site_name</th>
+                <th scope="col">url</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td>{{object.id}}</td>
+                <td><a href="{% url 'bookmark:detail' object.id %}" class="btn btn-outline-primary">{{object.site_name}}</a><br></td>
+                <td>{{object.url}}</td>
+                <td><a href="{% url 'bookmark:delete' object.id %}" class="btn btn-outline-danger">D</a></td>
+                <td><a href="{% url 'bookmark:update' object.id %}" class="btn btn-outline-info">U</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

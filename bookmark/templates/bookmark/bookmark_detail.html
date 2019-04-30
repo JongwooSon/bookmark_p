@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Detail
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-xl-12 col-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{object.site_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted"><a href="{{object.url}}">{{object.url}}</a></h6>
+                <p class="card-text">Contents</p>
+
+                <a href="{{ object.url }}">링크</a><br>
+                <a href="{% url 'bookmark:update' object.id %}">수정</a><br>
+                <a href="{% url 'bookmark:delete' object.id %}">삭제</a>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}
